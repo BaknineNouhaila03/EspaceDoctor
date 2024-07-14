@@ -1,12 +1,14 @@
 "use client";
 import "@assets/css/style.css";
 import { useMemo, useEffect, useState } from "react";
-import Sidebar from "@components/Sidebar";
-import Header from "@components/Header";
 import Link from "next/link";
 import dynamic from "next/dynamic"
 import { Table } from 'antd';
 import FeatherIcon from "feather-icons-react/build/FeatherIcon";
+import "@assets/css/font-awesome.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+
 import {
 
   imagesend,
@@ -15,183 +17,135 @@ import {
   pdficon4,
   plusicon,
   refreshicon,
+  filter,
   searchnormal,
   iconuser,
-} from "../../components/imagepath";
 
-const DoctorList = () => {
+} from "../../components/imagepath";
+import { Button } from "bootstrap/dist/js/bootstrap.bundle.min";
+
+const MyPatients = () => {
     const datasource = [
         {
-          id:1,
-          Img:iconuser,
-          Rating :"4.5",
-          Name: "Andrea Lalema",
-          Department: "Otolaryngologie",
-          Specialization: "Infertilité",
-          Degree: "MBBS, MS",
-          Mobile: "+1 23 456890",
-          Email: "example@email.com",
-          LinkedIn: "https://LinkedIn.com",
-          FIELD9: ""
+          id: 1,
+          Img: iconuser,
+          Name: "Aya Aya",
+          Gender: "Female",
+          Age: "13 ans",
+          Disease: "Grippe",
+          Mobile: "+212 6 12345678",
+          dossier :"Dossier Médical"
         },
         {
-          id:2,
-          Img:iconuser,
-          Rating :"3.5",
-          Name: "Dr.Smith Bruklin",
-          Department: "Urologie",
-          Specialization: "Prostate",
-          Degree: "MBBS, MS",
-          Mobile: "+1 23 456890",
-          Email: "example@email.com",
-          LinkedIn: "https://LinkedIn.com",
-          FIELD9: ""
-        },
-        {
-          id:3,
-          Rating :"1",
-          Img:iconuser,
-          Name: "Dr.William Stephin",
-          Department: "Radiologie",
-          Specialization: "Cancer",
-          Degree: "MBBS, MS",
-          Mobile: "+1 23 456890",
-          Email: "example@email.com",
-          LinkedIn: "https://LinkedIn.com",
-          FIELD9: ""
-        },
-        {
-          id:4,
-          Rating :"4",
-          Img:iconuser,
-          Name: "Bernardo James",
-          Department: "Dentiste",
-          Specialization: "Prostate",
-          Degree: "MBBS, MS",
-          Mobile: "+1 23 456890",
-          Email: "example@email.com",
-          LinkedIn: "https://LinkedIn.com",
-          FIELD9: ""
-        },
-        {
-          id:5,
-          Img:iconuser,
-          Rating :"2",
-          Name: "Cristina Groves",
-          Department: "Gynécologie",
-          Specialization: "Prostate",
-          Degree: "MBBS, MS",
-          Mobile: "+1 23 456890",
-          Email: "example@email.com",
-          LinkedIn: "https://LinkedIn.com",
-          FIELD9: ""
-        },
-        {
-          id:6,
-          Img:iconuser,
-          Rating :"4.5",
-          Name: "Mark Hay Smith",
-          Department: "Gynécologie",
-          Specialization: "Prostate",
-          Degree: "MBBS, MS",
-          Mobile: "+1 23 456890",
-          Email: "example@email.com",
-          LinkedIn: "https://LinkedIn.com",
-          FIELD9: ""
-        },
-        {
-          id:7,
-          Img:iconuser,
-          Rating :"3",
-          Name: "Andrea Lalema",
-          Department: "Otolaryngologie",
-          Specialization: "Infertilité",
-          Degree: "MBBS, MS",
-          Mobile: "+1 23 456890",
-          Email: "example@email.com",
-          LinkedIn: "https://LinkedIn.com",
-          FIELD9: ""
-        },
-        {
-          id:8,
-          Img:iconuser,
-          Rating :"5",
-          Name: "Dr.Smith Bruklin",
-          Department: "Urologie",
-          Specialization: "Prostate",
-          Degree: "MBBS, MS",
-          Mobile: "+1 23 456890",
-          Email: "example@email.com",
-          LinkedIn: "https://LinkedIn.com",
-          FIELD9: ""
-        },
-        {
-            id:9,
-            Img:iconuser,
-            Rating :"3",
-            Name: "Andrea Lalema",
-            Department: "Otolaryngologie",
-            Specialization: "Infertilité",
-            Degree: "MBBS, MS",
-            Mobile: "+1 23 456890",
-            Email: "example@email.com",
-            LinkedIn: "https://LinkedIn.com",
-            FIELD9: ""
-          },
-          {
-            id:10,
-            Img:iconuser,
-            Rating :"3",
-            Name: "Andrea Lalema",
-            Department: "Otolaryngologie",
-            Specialization: "Infertilité",
-            Degree: "MBBS, MS",
-            Mobile: "+1 23 456890",
-            Email: "example@email.com",
-            LinkedIn: "https://LinkedIn.com",
-            FIELD9: ""
-          },
-          {
-            id:11,
-            Img:iconuser,
-            Rating :"3",
-            Name: "Andrea Lalema",
-            Department: "Otolaryngologie",
-            Specialization: "Infertilité",
-            Degree: "MBBS, MS",
-            Mobile: "+1 23 456890",
-            Email: "example@email.com",
-            LinkedIn: "https://LinkedIn.com",
-            FIELD9: ""
-          }
-    ]
+          id: 2,
+          Img: iconuser,
+          Name: "Omar Omar",
+          Gender: "Male",
+          Age: "21 ans",
+          Disease: "Rhume",
+          Mobile: "+212 6 23456789",
+          dossier :"Dossier Médical"
 
-    const getStarRating = (rating) => {
-        const fullStars = Math.floor(rating);
-        const hasHalfStar = rating % 1 > 0;
-        let stars = '';
-    
-        for (let i = 0; i < 5; i++) {
-            if (i < fullStars) {
-                stars += '<span class="star full">&#9733;</span>';
-            } else if (i === fullStars && hasHalfStar) {
-                stars += '<span class="star half">&#9733;</span>';
-            } else {
-                stars += '<span class="star empty">&#9734;</span>';
-            }
+        },
+        {
+          id: 3,
+          Img: iconuser,
+          Name: "Sara Sara",
+          Gender: "Female",
+          Age: "17 ans",
+          Disease: "Diabète",
+          Mobile: "+212 6 34567890",
+          dossier :"Dossier Médical"
+
+        },
+        {
+          id: 4,
+          Img: iconuser,
+          Name: "Ahmed Ahmed",
+          Gender: "Male",
+          Age: "25 ans",
+          Disease: "Hypertension",
+          Mobile: "+212 6 45678901",
+          dossier :"Dossier Médical"
+
+        },
+        {
+          id: 5,
+          Img: iconuser,
+          Name: "Fatima Fatima",
+          Gender: "Female",
+          Age: "20 ans",
+          Disease: "Asthme",
+          Mobile: "+212 6 56789012",
+          dossier :"Dossier Médical"
+
+        },
+        {
+          id: 6,
+          Img: iconuser,
+          Name: "Mohamed Mohamed",
+          Gender: "Male",
+          Age: "22 ans",
+          Disease: "Anémie",
+          Mobile: "+212 6 67890123",
+          dossier :"Dossier Médical"
+
+        },
+        {
+          id: 7,
+          Img: iconuser,
+          Name: "Imane Imane",
+          Gender: "Female",
+          Age: "19 ans",
+          Disease: "Allergie",
+          Mobile: "+212 6 78901234",
+          dossier :"Dossier Médical"
+
+        },
+        {
+          id: 8,
+          Img: iconuser,
+          Name: "Youssef Youssef",
+          Gender: "Male",
+          Age: "23 ans",
+          Disease: "Migraine",
+          Mobile: "+212 6 89012345",
+          dossier :"Dossier Médical"
+
+        },
+        {
+          id: 9,
+          Img: iconuser,
+          Name: "Khadija Khadija",
+          Gender: "Female",
+          Age: "14 ans",
+          Disease: "Otite",
+          Mobile: "+212 6 90123456",
+          dossier :"Dossier Médical"
+
+        },
+        {
+          id: 10,
+          Img: iconuser,
+          Name: "Rachid Rachid",
+          Gender: "Male",
+          Age: "18 ans",
+          Disease: "Bronchite",
+          Mobile: "+212 6 01234567",
+          dossier :"Dossier Médical"
+
         }
-    
-        return stars;
-    };
+      ];      
+
 
     const columns = [
         {
-            title: "Nom ",
+            title: <span style={{ marginLeft: '20px' }}>Nom</span>,
             dataIndex: "Name",
             width : 200 ,
             render: (text, record) => (
                 <>
-                    <h2 className="profile-image">
+                        <h2 className="profile-image" style={{ marginLeft: '20px' }}>
                         <Link href="#" className="avatar avatar-sm me-2">
                             <img
                                 className="avatar-img rounded-circle"
@@ -206,41 +160,42 @@ const DoctorList = () => {
             sorter: (a, b) => a.Name.length - b.Name.length
         },
         {
-            title: "Lieu d'exercice",
-            dataIndex: "Department",
-            sorter: (a, b) => a.Department.length - b.Department.length,
+            title: <span style={{ marginLeft: '20px' }}>Sexe</span>,
+            dataIndex: "Gender",
+            sorter: (a, b) => a.Gender.length - b.Gender.length,
             width: 200, // Adjust the width as needed
-            render: (text) => <span style={{ whiteSpace: 'pre-wrap' }}>{text}</span>,
+            render: (text) => <span style={{ whiteSpace: 'pre-wrap' , marginLeft:'25px'}}>{text}</span>,
         },
         {
-            title: "Spécialité",
-            dataIndex: "Specialization",
-            sorter: (a, b) => a.Specialization.length - b.Specialization.length,
+            title: "Age",
+            dataIndex: "Age",
+            sorter: (a, b) => a.Age.length - b.Age.length,
             width: 150, // Adjust the width as needed
             render: (text) => <span style={{ whiteSpace: 'pre-wrap' }}>{text}</span>,
         },
         {
-            title: "Diplômes et Formations",
-            dataIndex: "Degree",
+            title: "Maladie",
+            dataIndex: "Disease",
             ellipsis: true, // Ensures text doesn't overflow and shows tooltip if truncated
-            width: 230, // Adjust the width as needed
+            width: 150, // Adjust the width as needed
             render: (text) => <span style={{ whiteSpace: 'pre-wrap' }}>{text}</span>,
         },
         {
-            title: "Évaluation",
-            dataIndex: "Rating",
-            width : 150,
-            render: (rating) => (
+            title: "Dossier Médical",
+            dataIndex: "dossier",
+            ellipsis: true, // Ensures text doesn't overflow and shows tooltip if truncated
+            width: 200, // Adjust the width as needed
+            render: (text) => <span style={{ whiteSpace: 'pre-wrap' }}>{text}</span>,
+            render: (text, record) => (
                 <>
-                    <span dangerouslySetInnerHTML={{ __html: getStarRating(rating) }}></span>
+                    <Link href="#">{record.dossier}</Link>
                 </>
-            ),
-            sorter: (a, b) => a.Rating - b.Rating,
+            )
         },
         {
             title: "Téléphone",
             dataIndex: "Mobile",
-            width: 200, // Adjust the width as needed
+            width: 150, // Adjust the width as needed
             render: (text) => <span style={{ whiteSpace: 'pre-wrap' }}>{text}</span>,
             render: (text, record) => (
                 <>
@@ -249,45 +204,25 @@ const DoctorList = () => {
             )
         },
         {
-            title: "Email",
-            dataIndex: "Email",
-            width :200,
-        },
-        {
-            title: "Lien LinkedIn",
-            dataIndex: "LinkedIn",
-            width :250,
-            render: (text, record) => (
-                <>
-                    <Link href="#">{record.LinkedIn}</Link>
-                </>
-            )
-        },
-        {
             title: "",
-            dataIndex: "actions",
+            dataIndex: "FIELD8",
             render: (text, record) => (
                 <>
                     <div className="text-end">
-                        {/* <div className="dropdown dropdown-action">
-                            <Link
-                                href="#"
-                                className="action-icon dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
+                        <div className="dropdown dropdown-action">
+                            <Link href="#" className="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="fas fa-ellipsis-v" />
                             </Link>
                             <div className="dropdown-menu dropdown-menu-end">
-                                <Link className="dropdown-item" href="/editdoctor">
+                                <Link href="/editdoctor" className="dropdown-item">
                                     <i className="far fa-edit me-2" />
                                     Modifier
                                 </Link>
-                                <Link className="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_patient">
+                                <Link href="#" className="dropdown-item" data-bs-toggle="modal" data-bs-target="#delete_patient">
                                     <i className="fa fa-trash-alt m-r-5"></i> Supprimer
                                 </Link>
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 </>
             ),
@@ -296,8 +231,6 @@ const DoctorList = () => {
 
     return (
         <>
-            <Header />
-            <Sidebar id='menu-item1' id1='menu-items1' activeClassName='doctor-list'/>
             <div className="page-wrapper">
                 <div className="content">
                     {/* Page Header */}
@@ -306,14 +239,14 @@ const DoctorList = () => {
                             <div className="col-sm-12">
                                 <ul className="breadcrumb">
                                     <li className="breadcrumb-item">
-                                        <Link href="#">Médecins</Link>
+                                        <Link href="#">Patients</Link>
                                     </li>
                                     <li className="breadcrumb-item">
                                         <i className="feather-chevron-right">
                                             <FeatherIcon icon="chevron-right" />
                                         </i>
                                     </li>
-                                    <li className="breadcrumb-item active">Liste des Médecins</li>
+                                    <li className="breadcrumb-item active">Liste des Patients</li>
                                 </ul>
                             </div>
                         </div>
@@ -328,7 +261,7 @@ const DoctorList = () => {
                                         <div className="row align-items-center">
                                             <div className="col">
                                                 <div className="doctor-table-blk">
-                                                    <h3>Liste des Médecins</h3>
+                                                    <h3>Mes Patients</h3>
                                                     <div className="doctor-search-blk">
                                                         <div className="top-nav-search table-search-blk">
                                                             <form>
@@ -357,6 +290,13 @@ const DoctorList = () => {
                                                                 className="btn btn-primary doctor-refresh ms-2"
                                                             >
                                                                 <img src={refreshicon.src} alt="#" />
+                                                                
+                                                            </Link>
+                                                            <Link
+                                                                href="#"
+                                                                className="filterr"
+                                                            >
+                                                                Filtrer 
                                                             </Link>
                                                         </div>
                                                     </div>
@@ -409,4 +349,4 @@ const DoctorList = () => {
     );
 };
 
-export default dynamic (() => Promise.resolve(DoctorList), {ssr: false})
+export default dynamic (() => Promise.resolve(MyPatients), {ssr: false})

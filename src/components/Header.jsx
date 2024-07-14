@@ -362,7 +362,7 @@ const Header = () => {
           >
             <i className="fa-solid fa-ellipsis-vertical" />
           </Link>
-          <div className="dropdown-menu dropdown-menu-end">
+          <div className="dropdown-menu dropdown-menu-end"style={{ marginLeft: '50px' }}>
             <Link href="#" className="dropdown-item">
               My Profile
             </Link>

@@ -1,7 +1,7 @@
 import "@assets/css/style.css";
 import "@assets/css/bootstrap.min.css";
 import Header from "../components/Header";
-
+import Sidebar from "@components/Sidebar";
 export const metadata = {
   title: "Espace Medecin ESJ",
   description:
@@ -29,6 +29,7 @@ const RootLayout = ({ children }) => {
       </head>
       <body>
         <Header />
+        <Sidebar id='menu-item1' id1='menu-items1' activeClassName='doctor-list'/>
         {children}
       </body>
     </html>

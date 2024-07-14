@@ -1,8 +1,6 @@
 "use client";
 import "@assets/css/style.css";
 import { useMemo, useEffect, useState } from "react";
-import Sidebar from "@components/Sidebar";
-import Header from "@components/Header";
 import Link from "next/link";
 import dynamic from "next/dynamic"
 import { Table } from 'antd';
@@ -272,7 +270,7 @@ const DoctorList = () => {
                         {/* <div className="dropdown dropdown-action">
                             <Link
                                 href="#"
-                                className="action-icon dropdown-toggle"
+                                className=""
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
@@ -296,8 +294,6 @@ const DoctorList = () => {
 
     return (
         <>
-            <Header />
-            <Sidebar id='menu-item1' id1='menu-items1' activeClassName='doctor-list'/>
             <div className="page-wrapper">
                 <div className="content">
                     {/* Page Header */}
@@ -401,7 +397,6 @@ const DoctorList = () => {
                         <div className="topnav-dropdown-header">
                             <span>Messages</span>
                         </div>
-                        {/* Other content */}
                     </div>
                 </div>
             </div>

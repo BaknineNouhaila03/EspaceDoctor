@@ -1727,6 +1727,32 @@ ul.chat-user-total li i.old-users {
   background: transparent;
   color: #000;
 }
+
+.filterr {
+  margin-left: 300px;
+  background: rgba(46, 55, 164, 0.05);
+  border-radius: 12px;
+  border: 0;
+  height: 40px;
+  padding: 8px 10px 10px 30px;
+  width: 100px;
+  color: #2e37a4; /* Set initial text color */
+  transition: all ease-in-out 0.3s;
+}
+
+.filterr:hover {
+  background: linear-gradient(92.39deg, #2e37a4 1.86%, #00318b 100%);
+  border: 1px solid #00318b;
+  color: #fff; /* Text color on hover */
+
+}
+
+.filterr:active {
+  background: linear-gradient(92.39deg, #2e37a4 1.86%, #00318b 100%);
+  border: 1px solid #00318b;
+  color: #fff; /* Text color on click */
+}
+
 .btn-primary-three {
   border: 1px solid #55ce63;
   border-radius: 25px;
